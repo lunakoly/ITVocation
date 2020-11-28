@@ -1,0 +1,180 @@
+{% extends 'frontend-common/page-with-2-sections.html' %}
+
+{% load static %}
+
+{% block local-style %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block local-script %}
+    <script>
+		document.addEventListener('DOMContentLoaded', e => {
+			let tabElements = document.querySelectorAll('.tabs')
+			let result = M.Tabs.init(tabElements, {})
+
+			let datepickers = document.querySelectorAll('.datepicker')
+			result = M.Datepicker.init(datepickers, {
+				format: 'yyyy-mm-dd'
+			})
+		})
+	</script>
+
+	<script>
+		$(document).ready(function(){
+    		$('select').formSelect();
+  		});
+  	</script>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+
+    <div id="content-main">
+        <div id="profile-summary">
+            <div id="profile-summary-head-spacer"></div>
+            <div id="profile-avatar-wrapper"></div>
+            <img id="profile-avatar" src="{{ profile.avatar.url }}" alt="">
+            <div id="profile-summary-head-spacer-2"></div>
+            <div id="profile-summary-content">
+                <div id="profile-name">
+                    {{ profile.name }} {{ profile.vorname }}
+                </div>
+                {% comment %} <div id="profile-description">
+                    {% if profile.status == 0 %}
+                        Врач
+                    {% elif profile.status == 1%}
+                        Пациент
+                    {% elif profile.status == 2%}
+                        Тестировщик
+                    {% elif profile.status == 3%}
+                        Исследователь
+                    {% endif %}
+                </div> {% endcomment %}
+
+
+
+                {% comment %} <div id="profile-short-stats">
+                    <div class="stat-entry">
+                        <div class="number">32</div>
+                        <div class="text">Друга</div>
+                    </div>
+                    <div class="stat-entry">
+                        <div class="number">8</div>
+                        <div class="text">Видео</div>
+                    </div>
+                    <div class="stat-entry">
+                        <div class="number">105</div>
+                        <div class="text">Записей</div>
+                    </div>
+                </div> {% endcomment %}
+                {% comment %} <div id="profile-status">
+                    Откладывать на завтра то, что можно сделать сегодня, — мое хобби. С утра до ночи откладывала бы
+                    не щадя живота.
+                </div> {% endcomment %}
+                <div id="profile-actions">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="profile-non-summary">
+            <h4>Общая информация</h4>
+
+            <div id="profile-general" style="margin: 0em 2.5em;">
+                {% comment %} <div class="row valign-wrapper">
+                    <div class="col s12">
+                        <div class="row">
+                            <form action="/account/" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form }}
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+                <div class="row">
+                    <div class="col s4">
+                        <div class="col-content">
+                            <label for="last-name">Фамилия</label>
+
+                            {{ form.vorname }}
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="col-content" id="first-name">
+                            <label for="first-name">Имя</label>
+
+                            {{ form.name }}
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="col-content" id="second-name">
+                            <label for="second-name">Отчество</label>
+
+                            {{ form.fathername }}
+                        </div>
+                    </div>
+
+                    <div class="col s4">
+                        <div class="col-content" id="birth-date">
+                            <label for="birth-date">Дата рождения</label>
+
+                            {{ form.age }}
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="col-content" id="city">
+                            <label for="city">Город</label>
+
+                            {{ form.city }}
+                            {% comment %} <select>
+                                <option value="" disabled selected>Выберете город</option>
+                                <option value="1">Санкт-Петербург</option>
+                                <option value="2">Москва</option>
+                                <option value="3">Новосибирск</option>
+                                <option value="4">Владивосток</option>
+                            </select> {% endcomment %}
+                        </div>
+                    </div>
+
+                    <div class="col s4">
+                        <div class="col-content" id="sex">
+                            <label for="sex">Пол</label>
+                            {{ form.gender }}
+                            {% comment %} <select>
+                                <option value="" disabled selected>Выберете пол</option>
+                                <option value="1">Мужской</option>
+                                <option value="2">Женский</option>
+                            </select> {% endcomment %}
+                        </div>
+                    </div>
+
+                    {% comment %} <div class="col s4">
+                        <div class="col-content" id="role" style="height: 79.5px !important;"> <!-- This is needed because of the use of {{ form.status }}. TODO: FIX -->
+                            <label for="role">Роль</label>
+                            <!-- <input type="text" id="role" placeholder="Роль"> -->
+                            {{ form.status }}
+                        </div>
+                    </div> {% endcomment %}
+
+                    {% comment %} <div class="col s8 longer-one">
+                        <div class="text">
+                            Если Вы яляетесь врачом или пациентом необходимо подтвердить это, введя специальный код в поле:
+                        </div>
+                        <div class="col-content" id="code">
+                            <label for="code">Код</label>
+                            <input type="text" id="code">
+                        </div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+
+            {% comment %} <h4>Статистика</h4>
+
+            <div id="profile-statistics">
+                <img src="{% static 'images/oval.svg' %}" alt="">
+                <p class="flow-text">После того, как Вы выполните задания, здесь появится Ваша статистика :)</p>
+            </div> {% endcomment %}
+        </div>
+    </div>
+{% endblock %}

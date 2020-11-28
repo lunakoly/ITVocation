@@ -1,0 +1,28 @@
+{% extends 'frontend-common/page.html' %}
+
+{% load static %}
+
+{% block local-style %}
+    <link rel="stylesheet" href="{% static 'frontend-common/css/page-with-2-section.css' %}">
+{% endblock %}
+
+{% block body %}
+    {{ block.super }}
+
+    <div class="hide-on-med-and-down exact-page-height-filler flex-row hidden-overflow">
+        {% include 'frontend-common/menu-section.html' %}
+
+        <div id="content-section" class="scrollbarless">
+            <div id="content-topbar">
+                <input type="text" id="content-search" placeholder="Поиск">
+                <button id="notofications-button" class="btn-flat waves-effect waves-dark unassigned"><i class="material-icons" style="color: #768492;">notifications</i></button>
+            </div>
+
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <div class="hide-on-large-only page-height-filler container flex-column">
+        <h1 class="centered-text gradient-text">Here the dragons be...</h1>
+    </div>
+{% endblock %}

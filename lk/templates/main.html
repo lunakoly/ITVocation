@@ -1,0 +1,122 @@
+{% extends 'frontend-common/page-with-3-sections.html' %}
+
+{% load static %}
+
+{% block local-style %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
+{% block local-script %}
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/logout.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+
+    <div id="content-carousel">
+        <div class="carousel carousel-slider center">
+            <!-- <div class="carousel carousel-slider center"> -->
+            <!-- <div class="carousel-fixed-item left">
+                <a class="btn waves-effect white grey-text darken-text-2">button</a>
+            </div> -->
+            {% for fd in recordings %}
+            <div class="carousel-item" style="background-image: url({{fd.img}});" href="#one!">
+                <h2 class="black-text">{{fd.header}}</h2>
+                <p class="black-text">{{fd.text}}</p>
+            </div>
+            {% endfor %}
+            <!-- </div> -->
+            {% comment %} <div class="carousel-item" style="background-image: url({% static 'images/house2.jpg' %});">
+                <div class="title">НОВОСТИ</div>
+                <div class="subtitle">Обнаружены самые ранние признаки болезни Паркинсона</div>
+            </div> {% endcomment %}
+
+            <div class="carousel-item" style="background-image: url({% static 'images/increase-serotonin.jpg' %});">
+                <div class="title">НОВОСТИ</div>
+                <div class="subtitle">На платформу добавлен голосовой помощник!</div>
+            </div>
+
+            {% comment %} <div class="carousel-item" style="background-image: url({% static 'images/increase-serotonin.jpg' %});">
+                <div class="title">НОВОСТИ</div>
+                <div class="subtitle">Ученые определили механизм разрушения клеток мозга при болезни Паркинсона</div>
+            </div> {% endcomment %}
+
+            {% comment %} <div class="carousel-item" style="background-image: url('images/test-house.png');">
+                <div class="title">Header 3</div>
+                <div class="subtitle">Text 3</div>
+            </div> {% endcomment %}
+        </div>
+    </div>
+
+    {% comment %} <p>
+Боле́знь Паркинсо́на — медленно прогрессирующее хроническое нейродегенеративное неврологическое заболевание, характерное для лиц старшей возрастной группы.
+<br><br>Присоединяйтесь к нашему проекту! Вместе мы сможем помочь оцифровать болезнь и обглечить жизнь пациентам!
+<br><br>Что для этого нужно сделать? Загружайте свои видео, проходите опросы, так мы сможем собрать необходимый датасет!
+    </p> {% endcomment %}
+
+    <p>
+Голосовые помощники, или голосовые ассистенты, помогают человеку быстро решать повседневные задачи без ввода запроса на компьютере или смартфоне — достаточно просто произнести команду. Умная колонка или ассистент на смартфоне ответит на вопрос, установит напоминание, поможет составить список дел, подберет музыку или видео. С помощниками можно даже поиграть и побеседовать. Также их используют, чтобы управлять светом, кондиционером и другими устройствами в умном доме. У голосовых помощников постоянно появляются новые функции.
+    </p>
+
+    <div class="padded-content">
+        <h4>Активности</h4>
+    </div>
+
+    {% comment %} <p>
+Что бы принять участие в проекте регистрируйтесь и выполняйте задания. Например, снимите видео как вы сжимаете руку в кулак. У вас это отнимет пару минут, но позволит нам обработать ваше видео и за счёт полученных данных облегчить жизнь сотням паркинсонникам!
+    </p> {% endcomment %}
+
+    <div class="padded-content">
+        <div id="big-cards" class="row">
+            <div class="col m6 s12">
+                <div class="col-content">
+                    <img src="{% static 'images/video.svg' %}" alt="">
+
+                    <div>
+                        <a id="video-button"  href="{% url 'competition_list' %}" class="btn waves-effect waves-light">Видео</a>
+                        <p>
+                            Снимай видео и обрабатывай на сервере!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col m6 s12">
+                <div class="col-content">
+                    <img src="{% static 'images/book.svg' %}" alt="">
+
+                    <div>
+                        <button id="book-button" class="btn waves-effect waves-light lighten-2 unassigned">Дневник</button>
+                        <p>
+                            Расскажи как прошёл твой день!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col m6 s12">
+                <div class="col-content">
+                    <img src="{% static 'images/document.svg' %}" alt="">
+
+                    <div>
+                        <button id="document-button" class="btn waves-effect waves-light cyan lighten-2 unassigned">Опросы</button>
+                        <p>
+                            Проходи опросы и мини-тесты!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col m6 s12">
+                <div class="col-content">
+                    <img src="{% static 'images/joystick.svg' %}" alt="">
+
+                    <div>
+                        <button id="joystick-button" class="btn waves-effect waves-light green lighten-2 unassigned">Игры</button>
+                        <p>
+                            Играй и развивайся одновремеено!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

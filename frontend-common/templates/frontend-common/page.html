@@ -1,0 +1,34 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<head>
+    <head>
+        <title>{% block title %}CyberCity{% endblock %}</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+        <link rel="shortcut icon" type="image/png" href="{% static 'frontend-common/images/favicon.ico' %}"/>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'frontend-common/css/theme.css' %}">
+
+        {% load i18n %}
+        {% load account socialaccount %}
+
+        {% block local-style %}{% endblock %}
+
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+        {% block body %}{% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'materialize/js/materialize.js' %}"></script>
+        <script type="text/javascript" src="{% static 'frontend-common/js/common.js' %}"></script>
+
+        {% block local-script %}{% endblock %}
+    </body>
+</head>

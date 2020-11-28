@@ -1,0 +1,58 @@
+{% extends 'frontend-common/page-with-2-sections.html' %}
+
+{% load static %}
+
+{% block local-style %}
+    <link rel="stylesheet" href="{% static 'css/competition_details.css' %}">
+{% endblock %}
+
+{% block local-script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            M.updateTextFields()
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+
+    <div class="container">
+        <h4>{{ comp_profile.header }}</h4>
+        <div class="flow-text">
+            {{ comp_profile.text }}
+        </div>
+        <br>
+        <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;">
+            <iframe width="425" height="344" src="{{ comp_profile.video_ref }}" frameborder="0" allowfullscreen
+                style="position:absolute; top:0; left:0; width:100%; height:100%;">
+            </iframe>
+        </div>
+        <div class="flow-text">
+            Награда: {{ comp_profile.exp }}<br>
+        </div>
+        {% if not hasLoaded %}
+        <div class="flow-text">
+            <div class="row">
+                <div class="col m6 s12">
+                    <form action="{{ absolute }}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="flow-text">
+            Ваш результат сейчас будет загружен.<br>
+        </div>
+        <div style="position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;">
+            <iframe width="425" height="344" src="{{ result.recognition.url }}" frameborder="0"
+                allowfullscreen
+                style="position:absolute; top:0; left:0; width:100%; height:100%;">
+            </iframe>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

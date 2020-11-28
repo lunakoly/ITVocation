@@ -1,0 +1,186 @@
+@import '../../../frontend-common/static/frontend-common/sass/page-with-3-section.scss';
+
+#content-section {
+    #content-carousel {
+        // padding: 1.7em;
+
+        .carousel-item {
+            @extend .unselectable;
+
+            border-radius: 1em;
+            min-height: 287px;
+            height: 287px;
+            width: calc(100% - 1.7em * 2);
+            margin-left: 1.7em;
+
+            padding: 1.2em;
+
+            .title {
+                font-size: 2.5em;
+            }
+
+            .subtitle {
+                margin: 0.3em 1.2em;
+                font-size: 1.3em;
+            }
+        }
+    }
+
+    p {
+        font-size: 1.01em;
+        padding: 0 1.7em;
+        text-align: justify;
+    }
+
+    h4 {
+        font-weight: bold;
+        font-size: 1.4em;
+        margin: 2.3em 0 1em 0;
+    }
+
+    #big-cards {
+        .col {
+            padding: 1em;
+
+            .col-content {
+                background-color: white;
+                border-radius: 1em;
+                padding: 1.2em;
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                img {
+                    height: 9em;
+                    margin: 1em;
+                    width: 135px;
+                }
+
+                #video-button {
+                    border-radius: 12px;
+                }
+
+                #book-button {
+                    background-color: $orange;
+                    border-radius: 12px;
+                }
+
+                #document-button {
+                    border-radius: 12px;
+                }
+
+                #joystick-button {
+                    border-radius: 12px;
+                }
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    max-width: 10em;
+
+                    p {
+                        padding: 0 1.2em;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.thing-with-image-and-2-texts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+        margin: 0.6em 1.2em 0.6em 1.7em;
+        border-radius: 0.4em;
+        height: 3em;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: 1;
+
+        p {
+            margin: 0;
+        }
+
+        .upper {
+            font-weight: bold;
+        }
+
+        .lower {
+            color: #a9abb9;
+        }
+    }
+
+    .progress {
+        flex-basis: 8em;
+        flex-grow: 0;
+        margin: 0em 1.5em 0em 0.5em;
+    }
+}
+
+.padded-content {
+    margin: 0em 1.7em 0em 1.7em;
+}
+
+.small-header {
+    margin: 1em 0em 1.2em 0em;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.advertising-block {
+    width: 100%;
+    padding: 1.2em 1.7em 1.2em 1.7em;
+    border-radius: 0.4em;
+}
+
+.simple-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 5.5em 4.5em 0 4.5em;
+
+    input[type="text"],input[type="password"] {
+        background-color: white;
+        border: 1px solid #d0d6da;
+        border-radius: 0.5em;
+        height: 2em;
+        padding: 0 0.5em;
+
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    label {
+        width: 100%;
+        text-align: left;
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: 1.8em;
+        transform: translateY(-30%);
+
+        background: linear-gradient(180deg, #FFA68D 9.38%, #8490EA 100%);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+    }
+
+    button {
+        margin: 1em 0;
+    }
+}

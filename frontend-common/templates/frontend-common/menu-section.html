@@ -1,0 +1,31 @@
+{% load static %}
+
+{% url 'account' as account_page %}
+{% url 'home' as home_page %}
+{% url 'competition_list' as competition_list_page %}
+{% url 'main' as tasks_page %}
+
+<div id="menu-section">
+    <div id="logo">
+        <img src="{% static 'images/logo-icon.svg' %}" alt="">
+        <p>CYBERCITY</p>
+    </div>
+
+    <div id="menu">
+        <a href="{% url 'account' %}" class="waves-effect waves-dark menu-entry {% ifequal request.path account_page %}selected{% endifequal %}"><i class="material-icons left">account_circle</i>Аккаунт</a>
+        <a href="{% url 'home' %}" class="waves-effect waves-dark menu-entry {% ifequal request.path home_page %}selected{% endifequal %}"><i class="material-icons left selected" >dashboard</i>Новости</a>
+        <div>
+            <a href="{% url 'competition_list' %}" class="waves-effect waves-dark menu-entry {% ifequal request.path competition_list_page %}highlighted{% endifequal %}{% ifequal request.path tasks_page %}highlighted{% endifequal %}"><i class="material-icons left" >date_range</i>Активности</a>
+            <div class="submenu">
+                <a href="{% url 'competition_list' %}" class="waves-effect waves-dark menu-entry {% ifequal request.path competition_list_page %}selected{% endifequal %}"><i class="material-icons left">ondemand_video</i>Видео</a>
+                <a class="waves-effect waves-dark menu-entry unassigned"><i class="material-icons left">poll</i>Опросы</a>
+                <a class="waves-effect waves-dark menu-entry unassigned"><i class="material-icons left">book</i>Дневник</a>
+                <a class="waves-effect waves-dark menu-entry unassigned"><i class="material-icons left">sports_esports</i>Игры</a>
+                <a href="{% url 'main' %}" class="waves-effect waves-dark menu-entry {% ifequal request.path tasks_page %}selected{% endifequal %}"><i class="material-icons left">local_bar</i>Задачи</a>
+            </div>
+        </div>
+        <a class="waves-effect waves-dark menu-entry unassigned"><i class="material-icons left" >supervisor_account</i>Пользователи</a>
+        <a class="waves-effect waves-dark menu-entry unassigned"><i class="material-icons left">favorite_border</i>О нас</a>
+        <a class="waves-effect waves-dark menu-entry unassigned"><i class="material-icons left" >settings</i>Настройки</a>
+    </div>
+</div>

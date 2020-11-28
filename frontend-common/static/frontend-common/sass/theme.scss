@@ -1,0 +1,11 @@
+@import 'helpers.scss';
+
+$global-background-color: #f5f5fb;
+$orange: #FFA68D;
+$blue: #8490EA;
+
+.gradient-text {
+    background: linear-gradient(180deg, $orange 9.38%, $blue 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
