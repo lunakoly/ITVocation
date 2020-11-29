@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
+from voice_bot.decorators import add_bot
 from .forms import UserProfileForm
 from .models import UserProfile, DiaryRecording, NewsRecording
 from .serializers import DiaryRecordingSerializer, NewsRecordingSerializer, UserProfileSerializer
@@ -121,7 +121,8 @@ def main_redirect_view(request):
     return HttpResponseRedirect('/')
 
 
-def home(request):
+@add_bot(bot_name='bot')
+def home(request, **kwargs):
     """
     This funciton represents the main page
     :param request:
@@ -133,4 +134,6 @@ def home(request):
         u_profile = {'name': "Имя", 'vorname': "Фамилия"}
     return render(request, 'main.html', {"recordings": NewsRecordingSerializer(NewsRecording.objects.all(),
                                                                                many=True).data,
-                                         'profile': u_profile})
+                                         'profile': u_profile,
+                                         "commands": kwargs['commands'],
+                                         "bot_name": kwargs['bot_name']})

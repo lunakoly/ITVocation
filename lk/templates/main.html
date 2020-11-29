@@ -21,10 +21,10 @@
                 <a class="btn waves-effect white grey-text darken-text-2">button</a>
             </div> -->
             {% for fd in recordings %}
-            <div class="carousel-item" style="background-image: url({{fd.img}});" href="#one!">
-                <h2 class="black-text">{{fd.header}}</h2>
-                <p class="black-text">{{fd.text}}</p>
-            </div>
+                <div class="carousel-item" style="background-image: url({{ fd.img }});" href="#one!">
+                    <h2 class="black-text">{{ fd.header }}</h2>
+                    <p class="black-text">{{ fd.text }}</p>
+                </div>
             {% endfor %}
             <!-- </div> -->
             {% comment %} <div class="carousel-item" style="background-image: url({% static 'images/house2.jpg' %});">
@@ -56,9 +56,42 @@
     </p> {% endcomment %}
 
     <p>
-Голосовые помощники, или голосовые ассистенты, помогают человеку быстро решать повседневные задачи без ввода запроса на компьютере или смартфоне — достаточно просто произнести команду. Умная колонка или ассистент на смартфоне ответит на вопрос, установит напоминание, поможет составить список дел, подберет музыку или видео. С помощниками можно даже поиграть и побеседовать. Также их используют, чтобы управлять светом, кондиционером и другими устройствами в умном доме. У голосовых помощников постоянно появляются новые функции.
+        Голосовые помощники, или голосовые ассистенты, помогают человеку быстро решать повседневные задачи без ввода
+        запроса на компьютере или смартфоне — достаточно просто произнести команду. Умная колонка или ассистент на
+        смартфоне ответит на вопрос, установит напоминание, поможет составить список дел, подберет музыку или видео. С
+        помощниками можно даже поиграть и побеседовать. Также их используют, чтобы управлять светом, кондиционером и
+        другими устройствами в умном доме. У голосовых помощников постоянно появляются новые функции.
     </p>
+    <script src="https://cdn.WebRTC-Experiment.com/MediaStreamRecorder.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <button value="Play" onclick="play()">PLAY</button>
+    <script>
+        function play() {
+            speechSynthesis.speak(
+                new SpeechSynthesisUtterance("{{ commands }}")
+            );
+        }
+    </script>
+    <section class="experiment">
 
+        <br>
+        <h3>
+            Нажмите кнопку "запись" и скажите команду
+        </h3>
+        <button id="start-recording">Start</button>
+        <button id="stop-recording" disabled>Stop</button>
+
+        <button id="pause-recording" disabled>Pause</button>
+        <button id="resume-recording" disabled>Resume</button>
+
+    </section>
+
+    <section class="experiment">
+        <div id="audios-container"></div>
+    </section>
+
+    {% include "chat_script.html" %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="padded-content">
         <h4>Активности</h4>
     </div>
@@ -74,7 +107,7 @@
                     <img src="{% static 'images/video.svg' %}" alt="">
 
                     <div>
-                        <a id="video-button"  href="{% url 'competition_list' %}" class="btn waves-effect waves-light">Видео</a>
+                        <a id="video-button" href="{% url 'competition_list' %}" class="btn waves-effect waves-light">Видео</a>
                         <p>
                             Снимай видео и обрабатывай на сервере!
                         </p>
@@ -86,7 +119,8 @@
                     <img src="{% static 'images/book.svg' %}" alt="">
 
                     <div>
-                        <button id="book-button" class="btn waves-effect waves-light lighten-2 unassigned">Дневник</button>
+                        <button id="book-button" class="btn waves-effect waves-light lighten-2 unassigned">Дневник
+                        </button>
                         <p>
                             Расскажи как прошёл твой день!
                         </p>
@@ -98,7 +132,9 @@
                     <img src="{% static 'images/document.svg' %}" alt="">
 
                     <div>
-                        <button id="document-button" class="btn waves-effect waves-light cyan lighten-2 unassigned">Опросы</button>
+                        <button id="document-button" class="btn waves-effect waves-light cyan lighten-2 unassigned">
+                            Опросы
+                        </button>
                         <p>
                             Проходи опросы и мини-тесты!
                         </p>
@@ -110,7 +146,9 @@
                     <img src="{% static 'images/joystick.svg' %}" alt="">
 
                     <div>
-                        <button id="joystick-button" class="btn waves-effect waves-light green lighten-2 unassigned">Игры</button>
+                        <button id="joystick-button" class="btn waves-effect waves-light green lighten-2 unassigned">
+                            Игры
+                        </button>
                         <p>
                             Играй и развивайся одновремеено!
                         </p>

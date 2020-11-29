@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'video-processing',
     'tasks',
+    'voice_bot'
 ]
 
 # Убрать перед релизом!!!

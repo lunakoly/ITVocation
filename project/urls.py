@@ -26,6 +26,7 @@ from project import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('lk.urls'), name='home'),
+    path('', include('voice_bot.urls'), name='bot'),
     path('video/', include('video-processing.urls'), name='videos'),
     path('tasks/', include('tasks.urls'), name='tasks'),
     url(r'^email-verification/$',

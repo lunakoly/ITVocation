@@ -2,11 +2,13 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from voice_bot.decorators import add_bot
 
 from .models import Task
 
 
-def task_main(request):
+@add_bot(bot_name='taskbot')
+def task_main(request, **kwargs):
     """
     Main page with tasks
     :param request:
@@ -16,7 +18,9 @@ def task_main(request):
     if not request.user.is_anonymous:
         user_tasks = Task.objects.filter(user=request.user)
     return render(request, 'task_page.html', {'tasks': Task.objects.all(),
-                                              'user_tasks': user_tasks})
+                                              'user_tasks': user_tasks,
+                                              "commands": kwargs['commands'],
+                                              "bot_name": kwargs['bot_name']},)
 
 
 @login_required()
