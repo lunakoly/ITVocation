@@ -64,7 +64,6 @@
     </p>
     <script src="https://cdn.WebRTC-Experiment.com/MediaStreamRecorder.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <button value="Play" onclick="play()">PLAY</button>
     <script>
         function play() {
             speechSynthesis.speak(
@@ -72,18 +71,25 @@
             );
         }
     </script>
-    <section class="experiment">
 
-        <br>
-        <h3>
+    <br>
+    <div class="padded-content">
+        <h4>Голосовой помощник</h4>
+    </div>
+    <p>
+        Чтобы узнать дступные голосовые команды нажмите на кнопку "PLAY".
+    </p>
+    <button value="Play" onclick="play()">PLAY</button>
+    
+    <section class="experiment" style="padding: 2em;">
+        <h5>
             Нажмите кнопку "запись" и скажите команду
-        </h3>
-        <button id="start-recording">Start</button>
-        <button id="stop-recording" disabled>Stop</button>
+        </h5>
+        <button id="start-recording" class="btn waves-effect waves-light">Start</button>
+        <button id="stop-recording" disabled class="btn waves-effect waves-light">Stop</button>
 
-        <button id="pause-recording" disabled>Pause</button>
-        <button id="resume-recording" disabled>Resume</button>
-
+        <button id="pause-recording" disabled class="btn waves-effect waves-light">Pause</button>
+        <button id="resume-recording" disabled class="btn waves-effect waves-light">Resume</button>
     </section>
 
     <section class="experiment">
@@ -92,13 +98,13 @@
 
     {% include "chat_script.html" %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <div class="padded-content">
+
+    {% comment %}<div class="padded-content">
         <h4>Активности</h4>
     </div>
-
-    {% comment %} <p>
+    <p>
 Что бы принять участие в проекте регистрируйтесь и выполняйте задания. Например, снимите видео как вы сжимаете руку в кулак. У вас это отнимет пару минут, но позволит нам обработать ваше видео и за счёт полученных данных облегчить жизнь сотням паркинсонникам!
-    </p> {% endcomment %}
+    </p> 
 
     <div class="padded-content">
         <div id="big-cards" class="row">
@@ -156,5 +162,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>{% endcomment %}
 {% endblock %}
