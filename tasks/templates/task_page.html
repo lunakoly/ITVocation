@@ -37,11 +37,11 @@
     <p>
         Чтобы узнать доступные голосовые команды нажмите на кнопку "PLAY".
     </p>
-    <button value="Play" onclick="play()" class="btn waves-effect waves-light" style="margin-left: 2em; ">PLAY</button>
+    <button value="Play" onclick="play()" class="btn waves-effect waves-light">PLAY</button>
 
     <section class="experiment" style="padding: 0em 2em 2em 2em;">
-        <p>
-            Нажмите кнопку "start" и скажите команду, затем нажмите кнопку "stop"
+        <p style="padding: 0em;">
+            Нажмите кнопку "start" и скажите команду, затем нажмите кнопку "stop".
         </p>
         <button id="start-recording" class="btn waves-effect waves-light">Start</button>
         <button id="stop-recording" disabled class="btn waves-effect waves-light">Stop</button>
@@ -56,10 +56,10 @@
 
     {% include "chat_script.html" %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <div class="article">
+        <!-- <div class="article">
             <h4>Текущие</h4>
             <p>Здесь расположены Ваши текущие задания!</p>
-        </div>
+        </div> -->
 
         <div class="row">
             {% for task in user_tasks %}
